@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Lại Hữu Lộc</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      color: #e5e7eb;
+      padding: 12px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      transition: padding 0.2s ease, background 0.2s ease;
+    }
+
+    header.scrolled {
+      padding: 8px 32px;
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    nav a {
+      font-size: 14px;
+      cursor: pointer;
+      color: #cbd5f5;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .dark-btn {
+      border: none;
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 999px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 40px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 40px 24px;
+      margin-bottom: 28px;
+      border-radius: 32px;
+      background: radial-gradient(circle at top left, #38bdf8 0, transparent 50%),
+                  radial-gradient(circle at bottom right, #a855f7 0, transparent 55%),
+                  #020617;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-content h1 {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-content h3 {
+      color: #cbd5f5;
+      margin-bottom: 10px;
+    }
+
+    .hero-img img {
+      width: 210px;
+      height: 210px;
+      border-radius: 32px;
+      object-fit: cover;
+      border: 3px solid rgba(248, 250, 252, 0.8);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0b1220;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      background: rgba(15, 23, 42, 0.85);
+      padding: 22px;
+      margin-bottom: 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #f97316;
+    }
+
+    /* ===== SKILLS ===== */
+    .skill {
+      margin-bottom: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      background: #0b1220;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar div {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #38bdf8, #a855f7);
+    }
+
+    /* ===== PROJECTS ===== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: #020617;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-4px);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* ===== CONTACT ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">Lại Hữu Lộc</div>
+    <nav>
+      <a href="#home">Trang chủ</a>
+      <a href="#about">Giới thiệu</a>
+      <a href="#skills">Kỹ năng</a>
+      <a href="#projects">Dự án</a>
+      <a href="#contact">Liên hệ</a>
+      <button class="dark-btn" onclick="toggleDarkMode()">🌙</button>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Xin chào, tôi là <span>Lại Hữu Lộc</span></h1>
+        <h3>Lập trình viên Web</h3>
+        <p>Tôi 36 tuổi, sống tại Tây Ninh. Đam mê lập trình web và muốn trở thành Frontend Developer.</p>
+        <button class="btn-primary" onclick="sayHello()">Kết nối ngay</button>
+      </div>
+
+      <div class="hero-img">
+        <img id="avatar" src="https://picsum.photos/350" alt="Ảnh đại diện">
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>Giới thiệu</h2>
+      <p>“Bắt đầu từ con số 0 nhưng không dừng lại ở đó.”  
+      Tôi đang học HTML, CSS, JavaScript và muốn phát triển thành Frontend Developer chuyên nghiệp.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2>Kỹ năng</h2>
+
+      <div class="skill"><p>HTML</p><div class="bar"><div style="width: 85%"></div></div></div>
+      <div class="skill"><p>CSS</p><div class="bar"><div style="width: 75%"></div></div></div>
+      <div class="skill"><p>JavaScript</p><div class="bar"><div style="width: 60%"></div></div></div>
+      <div class="skill"><p>Tư duy Logic</p><div class="bar"><div style="width: 90%"></div></div></div>
+      <div class="skill"><p>UI Design</p><div class="bar"><div style="width: 70%"></div></div></div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Dự án</h2>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="https://picsum.photos/400" alt="">
+          <h3>Website Hồ sơ cá nhân</h3>
+          <p>HTML + CSS + JS cơ bản.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="https://picsum.photos/401" alt="">
+          <h3>Portfolio (trang này)</h3>
+          <p>Dark mode, hiệu ứng mượt, giao diện cao cấp.</p>
+        </div>
+
+        <div class="project-card">
+          <img src="https://picsum.photos/402" alt="">
+          <h3>Ứng dụng Mini</h3>
+          <p>JS xử lý logic đơn giản.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Liên hệ</h2>
+      <p><strong>Email:</strong> your_laihuuloc006766@gmail.com</p>
+      <p><strong>SĐT:</strong> 0943225607</p>
+      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/16X3qqaNEL/" target="_blank">Facebook của tôi</a></p>
+      <p><strong>Địa chỉ:</strong> Tây Ninh, Việt Nam</p>
+
+      <button class="btn-primary" onclick="sayHello()">Gửi lời chào</button>
+    </section>
+
+    <footer>
+      © 2025 - Portfolio của Lại Hữu Lộc 
+    </footer>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    function sayHello() {
+      alert("Xin chào! Tôi là Lại Hữu Lộc, rất mong được hợp tác cùng bạn!");
+    }
+
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>
